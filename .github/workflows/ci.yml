@@ -1,0 +1,15 @@
+name: CI
+on: [ push ]
+jobs:
+  commands:
+    name: Check if tag exists
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if tag exists
+        run: |
+          if git tag --list | grep -q "staging"; then
+            echo "Tag exists"
+          else
+            echo "Tag does not exist"
+            exit 1
+          fi
