@@ -1,7 +1,7 @@
-name: CI
+name: Production Deployment
 on:
   release:
-    types: [ published ]
+    types: [ released ]
 
 jobs:
   approve1:
