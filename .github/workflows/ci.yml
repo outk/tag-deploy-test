@@ -1,15 +1,24 @@
 name: CI
-on: [ push ]
+on:
+  release:
+    types: [ published ]
+
 jobs:
-  commands:
-    name: Check if tag exists
-    runs-on: ubuntu-latest
+  greet:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    name: Greet
     steps:
-      - name: Check if tag exists
-        run: |
-          if git tag --list | grep -q "staging"; then
-            echo "Tag exists"
-          else
-            echo "Tag does not exist"
-            exit 1
-          fi
+      - uses: actions/checkout@v4
+      - name: Run commands
+        run: echo "Hello, World!"
+
+  check:
+    needs: greet
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    name: Check
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run commands
+        run: echo "Check"
