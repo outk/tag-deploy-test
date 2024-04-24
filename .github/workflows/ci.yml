@@ -14,8 +14,18 @@ jobs:
       - name: Run commands
         run: echo "Hello, World!"
 
+  approve1:
+    runs-on:
+      timeout-minutes: 5
+      environment: approve1
+      name: Approve1
+      steps:
+        - uses: actions/checkout@v4
+        - name: Description
+          run: echo "Approve1"
+
   check:
-    needs: greet
+    needs: [ greet, approve1 ]
     runs-on: ubuntu-22.04
     timeout-minutes: 5
     environment: prod
