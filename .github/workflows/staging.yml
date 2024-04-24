@@ -1,7 +1,7 @@
-name: CI
+name: Staging Deployment
 on:
   release:
-    types: [ created ]
+    types: [ published ]
 
 jobs:
   greet:
