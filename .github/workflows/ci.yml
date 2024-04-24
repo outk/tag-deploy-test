@@ -24,6 +24,16 @@ jobs:
       - name: Description
         run: echo "Approve1"
 
+  approve2:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    environment: approve2
+    name: Approve2
+    steps:
+      - uses: actions/checkout@v4
+      - name: Description
+        run: echo "Approve2"
+
   check:
     needs: [ greet, approve1 ]
     runs-on: ubuntu-22.04
