@@ -1,0 +1,15 @@
+name: CI
+on:
+  release:
+    types: [ created ]
+
+jobs:
+  greet:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    environment: staging
+    name: Greet
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run commands
+        run: echo "Deployed Staging!"

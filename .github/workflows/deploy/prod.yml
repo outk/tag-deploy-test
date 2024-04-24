@@ -4,16 +4,6 @@ on:
     types: [ published ]
 
 jobs:
-  greet:
-    runs-on: ubuntu-22.04
-    timeout-minutes: 5
-    environment: staging
-    name: Greet
-    steps:
-      - uses: actions/checkout@v4
-      - name: Run commands
-        run: echo "Hello, World!"
-
   approve1:
     runs-on: ubuntu-22.04
     timeout-minutes: 5
@@ -34,8 +24,8 @@ jobs:
       - name: Description
         run: echo "Approve2"
 
-  check:
-    needs: [ greet, approve1 ]
+  deploy-prod:
+    needs: [ approve1, approve2 ]
     runs-on: ubuntu-22.04
     timeout-minutes: 5
     environment: prod
@@ -43,4 +33,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run commands
-        run: echo "Check"
+        run: echo "Deployed prod!"
