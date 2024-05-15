@@ -1,7 +1,8 @@
 name: Production Deployment
 on:
   release:
-    types: [ released ]
+    types:
+      - prereleased
 
 jobs:
   approve1:
